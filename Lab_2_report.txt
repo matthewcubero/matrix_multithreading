@@ -1,0 +1,20 @@
+Question 1:
+Exectution times range from ~.0004 seconds to ~.0009 seconds.
+The matrix multiplication result is 125.
+
+Question 2:
+The instruction count is about ~2360000. This number will vary by +-(20000) instructions.
+These count values come from inscount0.out when ran with matrix.cpp.
+Count 2367962
+Count 2368912
+Count 2384161
+Count 2384818
+Count 2347094
+Count 2388252
+Count 2387436
+Count 2385795
+Count 2375193
+Count 2387933
+
+
+

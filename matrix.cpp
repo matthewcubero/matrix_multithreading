@@ -3,14 +3,14 @@
 #include <pthread.h>
 #include <iostream>
 #include <unistd.h>
+#include <time.h>
 #define NUM_THREADS 10
 
 using namespace std;
-
+clock_t start = clock();
 int fd0[2], fd1[2], fd2[2], fd3[2], fd4[2];
-int *fd_ptrs[5]; //= {&fd0, &fd1, &fd2, &fd3, &fd4};
-int A[5] = {2,2,4,3,5};
-int B[5] = {-1,-1,-1,1,1};
+int A[5] = {5,5,5,5,5};
+int B[5] = {5,5,5,5,5};
 int sum = 0;
 
 // A threads, sends their current value to B
@@ -52,6 +52,8 @@ void *multA4(void *arg) {
 // B threads
 void *multB0(void *arg) {
     cout << "Thread B0 made" << endl;
+    // B threads will receive val from A and multiply them
+    // together and add to total sum
     int elementB, elementA;
     read(fd0[0],&elementA,4);
     elementB = (long)arg;
@@ -61,6 +63,8 @@ void *multB0(void *arg) {
 }
 void *multB1(void *arg) {
     cout << "Thread B1 made" << endl;
+    // B threads will receive val from A and multiply them
+    // together and add to total sum    
     int elementB, elementA;
     read(fd1[0],&elementA,4);
     elementB = (long)arg;
@@ -71,6 +75,8 @@ void *multB1(void *arg) {
 }
 void *multB2(void *arg) {
     cout << "Thread B2 made" << endl;
+    // B threads will receive val from A and multiply them
+    // together and add to total sum
     int elementB, elementA;
     read(fd2[0],&elementA,4);
     elementB = (long)arg;
@@ -79,7 +85,9 @@ void *multB2(void *arg) {
     pthread_exit(NULL);
 }
 void *multB3(void *arg) {
-    cout << "Thread B3 made" << endl;
+    cout << "Thread B3 made" << endl;    
+    // B threads will receive val from A and multiply them
+    // together and add to total sum
     int elementB, elementA;
     read(fd3[0],&elementA,4);
     elementB = (long)arg;
@@ -89,7 +97,9 @@ void *multB3(void *arg) {
     pthread_exit(NULL);
 }
 void *multB4(void *arg) {
-    cout << "Thread B4 made" << endl;
+    cout << "Thread B4 made" << endl;    
+    // B threads will receive val from A and multiply them
+    // together and add to total sum
     int elementB, elementA;
     read(fd4[0],&elementA,4);
     elementB = (long)arg;
@@ -174,6 +184,7 @@ int main(int argc, char *argv[]) {
         cout << "Error with B4" << endl;
         exit(1);
     }
+    // join all threads to ensure correct answer
     pthread_join(threads[0], NULL);
     pthread_join(threads[1], NULL);
     pthread_join(threads[2], NULL);
@@ -185,13 +196,11 @@ int main(int argc, char *argv[]) {
     pthread_join(threads[8], NULL);
     pthread_join(threads[9], NULL);
     cout << "The matrix mult is = " << sum << endl;
+    clock_t end = clock();
+    double cput_time_used = ((double)(end - start))/CLOCKS_PER_SEC;
+    cout << "Program took " << cput_time_used << " seconds to execute" << endl;
     return 0;
 }
 
 // Compile with:
-//  g++ -g -o practice practice.cpp -lpthread
-//  how come sometimes my threads won't run?
-/*  Sometimes the answer will execute properly and sometimes it wont
-    I keep getting 0 or -8
-    How are we supposed to find the execution time?
-*/
+//  g++ -g -o matrix matrix.cpp -lpthread
