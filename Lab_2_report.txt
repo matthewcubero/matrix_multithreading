@@ -16,5 +16,29 @@ Count 2385795
 Count 2375193
 Count 2387933
 
+These values come from itrace.out0x7f51a1c4fc30
+0x7fe6ea679c30
+0x7fe6ea679c33
+0x7fe6ea67a9b0
+0x7fe6ea67a9b1
+0x7fe6ea67a9b4
+0x7fe6ea67a9b6
+0x7fe6ea67a9b8
+0x7fe6ea67a9ba
+0x7fe6ea67a9bc
+0x7fe6ea67a9bf
+
+These values come from pinatrace.out
+0x7fac7eec2c33: W 0x7ffdbb1a31e8
+0x7fac7eec39b0: W 0x7ffdbb1a31e0
+0x7fac7eec39b4: W 0x7ffdbb1a31d8
+0x7fac7eec39b6: W 0x7ffdbb1a31d0
+0x7fac7eec39b8: W 0x7ffdbb1a31c8
+0x7fac7eec39ba: W 0x7ffdbb1a31c0
+0x7fac7eec39bf: W 0x7ffdbb1a31b8
+0x7fac7eec39d6: W 0x7fac7f0e7c60
+0x7fac7eec39dd: R 0x7fac7f0e7e80
+0x7fac7eec39e7: R 0x7fac7f0e8000
+
 
 
